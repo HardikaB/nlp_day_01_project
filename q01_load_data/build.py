@@ -27,12 +27,13 @@ def q01_load_data(path,seed=9):
         trainX = np.append(trainX, tmpX)
         labels = labels + tmpY'''
         
-    data=load_files(path, categories=CatD, load_content=True, encoding='unicode_escape', decode_error='strict', random_state=9)
+    data=load_files(path, categories=CatD,  encoding='unicode_escape', decode_error='ignore', random_state=9)
     dict1={0:'alt.atheism',1: 'comp.graphics', 2:'sci.med', 3:'soc.religion.christian'}
     labels = list()
     for i in data['target']:
         labels.append((dict1[i]))
     X_train, X_test, y_train, y_test = train_test_split(data['data'], labels, train_size = 0.8)
-    return (data),(X_train), (X_test), np.array(y_train), np.array(y_test)
+    return data,X_train, X_test, np.array(y_train), np.array(y_test)
 
+#q01_load_data(path,seed=9)
 
